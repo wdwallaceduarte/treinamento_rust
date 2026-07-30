@@ -1,7 +1,8 @@
+#
 **OBS.:** Caso a leganda na video aula volte a aparecer na plataforma da DIO 
 1. Basta abrir o console `F12` e executar o comando: ` document.querySelector("iframe").src += "&cc_load_policy=0" ` 
-
-### Comandos para o Rust 
+#
+## Comandos para o Rust 
 `cargo run` - Executa o bloco de codigo para teste;
 `cargo run -p "nome-da-pasta'` - Executa o bloco de codigo para teste desntro da subpasta;
 
@@ -19,18 +20,20 @@
 
 `cargo fmt` - usado para formatar todos os arquivos
 
-### Cargo Workspaces
+## Cargo Workspaces
 
 No arquivo `Cargo.toml` na raiz adcionar `[workspace]`
 
-Ex: 
+Ex:   
 [workspace]   
 members = [  
     "desafio-basico",  
     "ownership-e-borrowing",  
     "manipulacao-de-strings",  
+    "gerenciamento-de-arquivos-mod/0-modulos-app",  
 ]  
-1. Dentro da pasta principal, quando for começar um novo tópico ou desafio, crie o subprojeto executando:  
+1. Dentro da pasta principal, quando for começar um novo tópico ou desafio, crie o subprojeto executando: `~/Documents/Full-Stack/DIO/Bootcamp Santander/treinamento_rust` 
+     
    `cargo new "nome-do-projeto`
 2. Para rodar o projeto especifico no terminal, basata digitar:  
     `cargo run -p "nome-do-projeto"`  
