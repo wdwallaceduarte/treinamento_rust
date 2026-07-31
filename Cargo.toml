@@ -8,6 +8,6 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [workspace]
-members = ["generics","polimorfismo_e_impl_trait_vs_dynTrait",
+members = ["app_clientes_console","generics", "lifetimes","polimorfismo_e_impl_trait_vs_dynTrait",
     "traits", "traits-1",
 ]
