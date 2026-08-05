@@ -1,8 +1,11 @@
 mod tela;
+mod models;
 
+use models::cliente::Cliente;
 use tela::menu as menu;
 
 
 fn main() {
-    menu::mostrar_menu();
+    let mut clientes:Vec<Cliente> = Vec::new();
+    menu::mostrar_menu(&mut clientes);
 }

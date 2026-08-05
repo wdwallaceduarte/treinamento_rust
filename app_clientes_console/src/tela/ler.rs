@@ -6,7 +6,7 @@ pub fn ler_dados() -> String {
     dados.trim().to_string()
 }
 
-pub fn ler_dados_int() -> i32 {
+pub fn ler_dados_int() -> usize {
     let mut dados = String::new();
     io::stdin().read_line(&mut dados).expect("Falaha ao ler os dados");
     dados.trim().parse().expect("Erro ao converter dados para inteiro")
