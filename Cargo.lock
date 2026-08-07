@@ -41,7 +41,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "criando_pacote_crate"
+version = "0.1.0"
+
+[[package]]
 name = "desafio_02"
+version = "0.1.0"
+
+[[package]]
+name = "desafio_2_1"
 version = "0.1.0"
 
 [[package]]

@@ -1,5 +1,5 @@
 [package]
-name = "desafio_02"
+name = "criando_pacote_crate"
 version = "0.1.0"
 edition = "2024"
 
