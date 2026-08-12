@@ -1,5 +1,5 @@
 [package]
-name = "criando_pacote_crate"
+name = "validador"
 version = "0.1.0"
 edition = "2024"
 
