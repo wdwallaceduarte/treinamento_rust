@@ -13,7 +13,8 @@ fn main() {
             println!("Erro ao ler entrada: {}", e);
         }
     }
-    let validado: bool = vd::validar_cpf(cpf.as_str());
+    let validado: bool = vd::validadores::cpf(cpf.as_str());
+    // let validado: bool = vd::validadores::cnpj(cnpj.as_str()); //Ou CNPJ
 
     if validado {
         println!("O CPF é válido!")
