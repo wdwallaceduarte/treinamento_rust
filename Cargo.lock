@@ -400,6 +400,10 @@ name = "traits-1"
 version = "0.1.0"
 
 [[package]]
+name = "tratamento-de-erros"
+version = "0.1.0"
+
+[[package]]
 name = "treinamento_rust"
 version = "0.1.0"
 dependencies = [

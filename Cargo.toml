@@ -15,5 +15,5 @@ members = [
 "generics", 
 "lifetimes",
 "polimorfismo_e_impl_trait_vs_dynTrait",
-"traits", "traits-1",
+"traits", "traits-1", "tratamento-de-erros",
 ]

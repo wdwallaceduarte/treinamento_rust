@@ -20,7 +20,7 @@ Entrada | Saída
  75 75  | Compra aprovada */
 // DESAFIO 1
 
-use std::io;
+/* use std::io;
 
 fn main() {
     // Lê a linha de entrada do usuário (saldo e valor da compra)
@@ -41,7 +41,7 @@ fn main() {
     } else {
         println!("Saldo insuficiente");
     }
-} 
+} */ 
 
 /* //  DESAFIO 2
 
@@ -66,3 +66,53 @@ fn main() {
     }
 } */
 
+/* fn main() {
+    // Inicialize as variáveis
+    // Substitua os valores de placeholder abaixo pelos da tarefa
+    let is_sunny: bool = true;
+    let wind_speed: f64 = 9.0;
+    let temperature: i32 = 22;
+    let solar_panel_output: i32 = 14;
+    let is_cloudy: bool = true;
+    
+    // A expressão lógica completa
+    // Substitua o placeholder abaixo pela condição completa
+    let result: bool = true;
+    
+    // Não apague as linhas abaixo
+    println!("Checking conditions for solar energy production...");
+    println!("1. Is it sunny? {}", is_sunny);
+    println!("2. Is wind speed safe? {}", (wind_speed < 10.0));
+    println!("3. Can panels produce more? {}", (solar_panel_output < 15));
+    println!("4. Is temperature good OR no clouds? {}", (temperature > 20 || !is_cloudy));
+    println!("\\nFinal result - Good day for solar energy production: {}", result);
+} */
+
+use std::io;
+
+fn main() {
+    let mut n1_input = String::new();
+    let mut n2_input = String::new();
+    let mut op_input = String::new();
+    
+    println!("Digite um valor");
+    io::stdin().read_line(&mut n1_input).unwrap();
+    println!("Digite outro valor");
+    io::stdin().read_line(&mut n2_input).unwrap();
+    println!("Qual operador você deseja usar?");
+    io::stdin().read_line(&mut op_input).unwrap();
+    
+    let n1: f64 = n1_input.trim().parse().unwrap();
+    let n2: f64 = n2_input.trim().parse().unwrap();
+    let op = op_input.trim();
+    
+    // Escreva seu código abaixo, use n1, n2 e op
+    let mut result: f64 = 0.0;
+    
+    if op == "+" {
+        result = n1 + n2
+    }
+    
+    
+    println!("{}", result);
+}
