@@ -1,4 +1,5 @@
 /* ===== Operador Option ===== */
+/* 
  fn encontrar_divisor(numero: i32) -> Option<i32> {
     if numero % 2 == 0 {
         Some(2) // Um divisor encontrado
@@ -15,6 +16,7 @@ fn main() {
         None => println!("\nNenhum divisor encontrado para {}", numero),
     }
 } 
+ */
 
 /* ===== Operador Result ===== */
 /*    
@@ -151,44 +153,100 @@ fn main() {
  */
 
 /* ===== Error Types Customizados com Trait Debug===== */
-/* 
-        use std::error::Error;
-        use std::fs::File;
-        use std::io::{self, Read};
 
-    // Função que tenta ler o conteúdo de um arquivo para uma String
-    fn ler_conteudo_arquivo(nome_arquivo: &str) -> Result<String, io::Error> {
-        let mut f = File::open(nome_arquivo)?; // Se falhar, retorna o erro para o chamador
-        let mut conteudo = String::new();
-        f.read_to_string(&mut conteudo)?; // Se falhar, retorna o erro para o chamador
-        Ok(conteudo) // Retorna o conteúdo do arquivo em caso de sucesso
+use std::error::Error;
+use std::fs::File;
+use std::io::{self, Read};
+
+// Função que tenta ler o conteúdo de um arquivo para uma String
+fn ler_conteudo_arquivo(nome_arquivo: &str) -> Result<String, io::Error> {
+    let mut f = File::open(nome_arquivo)?; // Se falhar, retorna o erro para o chamador
+    let mut conteudo = String::new();
+    f.read_to_string(&mut conteudo)?; // Se falhar, retorna o erro para o chamador
+    Ok(conteudo) // Retorna o conteúdo do arquivo em caso de sucesso
+}
+
+
+#[derive(Debug)]
+enum ErroDeTransacao {
+    SaldoInsuficiente { saldo_atual: f64, tentativa_saque: f64 },
+    ErroDeAutenticacao,
+    ErroDeRede,
+    ErroComFonte { mensagem: String, fonte: Box<dyn Error> }, // Novo
+}
+
+impl std::fmt::Display for ErroDeTransacao {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            ErroDeTransacao::SaldoInsuficiente { saldo_atual, tentativa_saque } => {
+                write!(f, "Saldo insuficiente: saldo atual R${}, tentativa de saque R${}", saldo_atual, tentativa_saque)
+            },
+            ErroDeTransacao::ErroDeAutenticacao => {
+                write!(f, "Erro de autenticação: usuário não pode ser autenticado")
+            },
+            ErroDeTransacao::ErroDeRede => {
+                write!(f, "Erro de rede: não foi possível conectar ao servidor")
+            },
+            ErroDeTransacao::ErroComFonte { mensagem, fonte } => {
+                write!(f, "{}: {}", mensagem, fonte)
+            },
+        }
+    }
+}
+
+// Implementando o trait Error
+impl std::error::Error for ErroDeTransacao {
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
+        match self {
+            ErroDeTransacao::ErroComFonte { fonte, .. } => Some(fonte.as_ref()),
+            _ => None,
+        }
+    }
+}
+
+fn processar_transacao(valor: f64, autenticado: bool, falha_na_rede: bool, com_fonte: bool) -> Result<(), ErroDeTransacao> {
+    let saldo = 100.0; // Supondo um saldo de conta fictício
+    if valor > saldo {
+        return Err(ErroDeTransacao::SaldoInsuficiente { saldo_atual: saldo, tentativa_saque: valor });
     }
 
-
-    #[derive(Debug)]
-    enum ErroDeTransacao {
-        SaldoInsuficiente { saldo_atual: f64, tentativa_saque: f64 },
-        ErroDeAutenticacao,
-        ErroDeRede,
-        ErroComFonte { mensagem: String, fonte: Box<dyn Error> }, // Novo
+    // Simulando um erro de autenticação
+    if !autenticado {
+        return Err(ErroDeTransacao::ErroDeAutenticacao);
     }
 
-    impl std::fmt::Display for ErroDeTransacao {
-        fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-            match self {
-                ErroDeTransacao::SaldoInsuficiente { saldo_atual, tentativa_saque } => {
-                    write!(f, "Saldo insuficiente: saldo atual R${}, tentativa de saque R${}", saldo_atual, tentativa_saque)
-                },
-                ErroDeTransacao::ErroDeAutenticacao => {
-                    write!(f, "Erro de autenticação: usuário não pode ser autenticado")
-                },
-                ErroDeTransacao::ErroDeRede => {
-                    write!(f, "Erro de rede: não foi possível conectar ao servidor")
-                },
-                ErroDeTransacao::ErroComFonte { mensagem, fonte } => {
-                    write!(f, "{}: {}", mensagem, fonte)
-                },
+    // Simulando um erro de rede
+    if falha_na_rede {
+        return Err(ErroDeTransacao::ErroDeRede);
+    }
+
+    if com_fonte {
+        let result_arquivo: Result<String, io::Error> = ler_conteudo_arquivo("arquivo.txt");
+        match result_arquivo {
+            Ok(_) => { },
+            Err(erro) => {
+                return Err(ErroDeTransacao::ErroComFonte {
+                    mensagem: "Erro ao abrir arquivo".to_string(),
+                    fonte: Box::new(erro),
+                });
             }
         }
     }
-*/
+
+    // Se chegarmos aqui, supomos que a transação foi bem-sucedida
+    Ok(())
+}
+
+fn main() {
+    match processar_transacao(10.0, true, false, true) {
+        Ok(_) => println!("Transação processada com sucesso"),
+        Err(e) => {
+            println!("Falha ao processar transação: {}", e);
+
+            // Aqui, você também pode acessar a causa raiz ou backtrace se necessário (requer 'std::error::Error')
+            if let Some(source) = e.source() {
+                println!("Causado por: {}", source);
+            }
+        },
+    }
+}
