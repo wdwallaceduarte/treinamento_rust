@@ -9,7 +9,7 @@ serde_json = "1.0"
 
 [workspace]
 members = [
-"app_clientes_console", "crates/usar_validador", "crates/validador",  
+"app_clientes_console", "coddy/monhtanha-russa", "crates/usar_validador", "crates/validador",  
 "desafio-transacoes-rust", 
 "desafio-validacao-rust",
 "generics", 
