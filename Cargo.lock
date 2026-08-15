@@ -150,10 +150,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d26c52dbd32dccf2d10cac7725f8eae5296885fb5703b261f7d0a0739ec807ab"
 
 [[package]]
+name = "macros-e-meta"
+version = "0.1.0"
+dependencies = [
+ "clearscreen",
+ "minha_macro_lib",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "memchr"
 version = "2.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
+
+[[package]]
+name = "minha_macro_lib"
+version = "0.1.0"
 
 [[package]]
 name = "minimal-lexical"

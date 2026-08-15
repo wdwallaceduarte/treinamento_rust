@@ -13,7 +13,7 @@ members = [
 "desafio-transacoes-rust", 
 "desafio-validacao-rust",
 "generics", 
-"lifetimes",
+"lifetimes", "macros-e-meta",
 "polimorfismo_e_impl_trait_vs_dynTrait",
 "traits", "traits-1", "tratamento-de-erros",
 ]
