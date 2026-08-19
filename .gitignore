@@ -1,7 +1,12 @@
 /target
 /desafio-saque-rust 
+<<<<<<< HEAD
 /desafio-transferencia-rust
 
 # Estou em outro repositório
 # desafio-transferencia-rust: https://github.com/wdwallaceduarte/desafio-transferencia-rust.git
 # desafio-saque-rust: https://github.com/wdwallaceduarte/-desafio-saque-rust.git
+=======
+/desafio-transferencia-rust 
+
+>>>>>>> 15e8944f201431dd5adeb47731c8f237c5b84c97
