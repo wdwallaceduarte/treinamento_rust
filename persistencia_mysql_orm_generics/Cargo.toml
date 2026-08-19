@@ -1,0 +1,9 @@
+[package]
+name = "persistencia_mysql_orm_generics"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dotenv = "0.15.0"
+mysql = "24.0.0" 
+model_macro = { path = "./model_macro" }
