@@ -114,7 +114,7 @@ fn main() {
     } else if op == "-" {
         result = n1-n2
     } else if op == "*" {
-        result = n1*n2 
+        result = n1*n2
     }else if op == "/" {
         result = n1/n2
     };
@@ -122,5 +122,3 @@ fn main() {
     println!("\nO resultado de {} {} {} = {}", n1_input.trim(), op_input.trim(), n2_input.trim(), result);
     // println!("{}", result);
 }
-
-

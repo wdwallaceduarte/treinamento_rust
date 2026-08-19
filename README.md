@@ -40,3 +40,19 @@ members = [
 Ou  
 Entrar na pasta do projeto
 `cd nome-do-projeto` e rodar o comando `cargo run`. Quando quiser sair da pasta `cd..`
+
+## Padrões Simples
+```bash
+>  Entrada/informação  
+=> Resultado  
+✓  Sucesso  
+✗  Erro  
+↲  Enter
+println!("> Digite sua idade:");
+
+println!("=> Você tem {} anos", idade);
+
+println!("✓ Idade válida");
+
+println!("✗ Idade inválida");
+    println!("Digite Enter ↲  para continuar...");
