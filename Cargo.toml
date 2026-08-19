@@ -12,7 +12,7 @@ members = [
 "app_clientes_console", "coddy/monhtanha-russa", "concorrencia-e-paralelismo", "crates/usar_validador", "crates/validador", "desafio-saque-rust",  
 "desafio-transacoes-rust", "desafio-transferencia-rust", "desafio-validacao-rust",
 "generics", 
-"lifetimes", "macro-decorators", "macro-e-meta-processuais", "macros-e-meta-declarativa", "persistencia_json", "persistencia_mysql", "persistencia_mysql_orm_generics",
+"lifetimes", "macro-decorators", "macro-e-meta-processuais", "macros-e-meta-declarativa", "persistencia_json", "persistencia_mysql", "persistencia_mysql_orm_generics", "persistencia_orm_diesel",
 "polimorfismo_e_impl_trait_vs_dynTrait", "programacao-funcional",
 "traits", "traits-1", "tratamento-de-erros",
 ]
